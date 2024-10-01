@@ -20,7 +20,7 @@ function App() {
  const getAllemployee=()=>{
   axios.get('https://jsonplaceholder.typicode.com/todos').then((res)=>{
     // console.log(res.data)
-    // setEmpList((e)=>([...e,...res.data]))
+    setEmpList((e)=>([...e,...res.data]))
   });
  }
 
@@ -50,7 +50,7 @@ const reqHeader={
   // getAllemployee()
   }
 
-    const onEdit=(data)=>{
+    const onEditEmp=(data)=>{
       alert("edit");
     }
 
@@ -143,18 +143,17 @@ const reqHeader={
     <td>{ele.userId}</td>
     <td>{ele.title}</td>
     <td>{ele.userId}</td>
+   
     <td>{}</td>
     <td>{}</td>
     <td>{}</td>
     <td>{}</td>
-    <td>{}</td>
-    <td><button className="btn btn-primary mx-2">Edit</button><button className="btn btn-danger mx-2">Del</button></td>
+    <td>
+      <button className="btn btn-primary mx-2" onClick={()=>onEditEmp(ele)}>Edit</button>
+      <button className="btn btn-danger mx-2" onClick={()=>onDelEmp(ele)}>Del</button></td>
   </tr>
-
     ))
   }
-
-  
         </table>
         
       </div>
