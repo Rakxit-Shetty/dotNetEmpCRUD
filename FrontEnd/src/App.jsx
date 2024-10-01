@@ -28,17 +28,22 @@ function App() {
           <h2 className="mb-4">Employee DataStore</h2>
         <div>
 
+        <div className="row col-12">
+        <div className="col-6"> 
+           <label>Employee Name</label>
+           </div>
+           <div className="col-6">
+           <input id="name" name="empName" className="mx-2" type="text" value={empName} onChange={(e)=>setEmpName(e.target.value)}/>
+           </div>
+        </div>
+
           
         <div className="row col-12">
-          
-          <div className="col-6"> 
-           
-            <label>Employee Name</label>
-        <input id="name" name="empName" className="mx-2" type="text" value={empName} onChange={(e)=>setEmpName(e.target.value)}/>
-        
+        <div className="col-6">
+          <label>Employee Age</label>
         </div>
-        <div className="col-6"><label>Employee Age</label>
-        <input id="age" name="age" className="mx-2" type="text" value={empAge} onChange={(e)=>setEmpAge(e.target.value)}/>
+        <div className="col-6">        
+          <input id="age" name="age" className="mx-2" type="text" value={empAge} onChange={(e)=>setEmpAge(e.target.value)}/>
         </div>
         </div>
         
