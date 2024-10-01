@@ -24,4 +24,8 @@ body {
 }
 table, th, td {
   border:1px solid black;
+  min-width: 70px;
+}
+th{
+  background-color: rgb(55, 205, 55);
 }
