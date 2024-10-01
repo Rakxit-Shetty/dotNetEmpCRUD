@@ -46,7 +46,24 @@ function App() {
           <input id="age" name="age" className="mx-2" type="text" value={empAge} onChange={(e)=>setEmpAge(e.target.value)}/>
         </div>
         </div>
+
+        <div className="row col-12">
+        <div className="col-6">
+          <label>Employee DOB</label>
+        </div>
+        <div className="col-6">        
+          <input id="age" name="age" className="mx-2" type="text" value={empAge} onChange={(e)=>setEmpAge(e.target.value)}/>
+        </div>
+        </div>
         
+        <div className="row col-12">
+        <div className="col-6">
+          <label>Employee Desi</label>
+        </div>
+        <div className="col-6">        
+          <input id="age" name="age" className="mx-2" type="text" value={empAge} onChange={(e)=>setEmpAge(e.target.value)}/>
+        </div>
+        </div>
          
         </div>
         
