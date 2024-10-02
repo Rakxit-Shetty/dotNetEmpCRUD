@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Modal } from "react-bootstrap";
 import EditEmp from './components/modals/EditEmp';
 import DelEmp from './components/modals/DelEmp';
+import { is18OrOlder } from './util/GlobalFunctions';
 import axios from 'axios';
 // import './App.css'
 //SHREYA
@@ -23,7 +24,7 @@ function App() {
   const [empList,setEmpList]=useState([]);
   const [editEmpDetModal,setEditEmpModal]=useState({status:false, data:null});
   const [delEmpDetModal,setDelEmpModal]=useState({status:false, data:null});
-
+  const [is18Validation,setIs18Validation]=useState(false);
  
  
  const getAllemployee=()=>{
@@ -36,6 +37,14 @@ function App() {
     getAllemployee();
   },[])
   
+  useEffect(()=>{
+    if(is18Validation){
+    setTimeout(()=>{
+      setIs18Validation(false)
+    },2500)
+    }
+  },[is18Validation])
+
   const getAge=(DOBdata)=>{
     return Number(new Date().getFullYear()) - Number(DOBdata.split("-")[0]) 
   }
@@ -47,6 +56,11 @@ function App() {
 
   const onEmpDetSubmit=async (e)=>{
   e.preventDefault();
+
+  if(!is18OrOlder(empDet.dob)){  
+    setIs18Validation(true);
+    return;
+  }
 
 const reqHeader={
   headers: {
@@ -90,6 +104,13 @@ const reqHeader={
   console.log("emp",empList);
   
   return (<>
+
+    {/* emp validation */}
+    <Modal show={is18Validation}>
+      <div className="bg-danger d-flex justify-content-center">
+        <h5 className="m-2 p-2 text-light">Employee should be greater than 18 year&apos;s old</h5></div>
+      </Modal>
+
   {/* EDIT EMP */}
   <Modal
           show={editEmpDetModal.status}
