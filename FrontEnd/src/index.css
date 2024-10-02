@@ -1,7 +1,8 @@
 :root {
   font-family: "Lucida Console", "Courier New", monospace, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 450;
+  font-size: medium;
 
   /* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -21,7 +22,7 @@ body {
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
-  background-color: rgb(52, 50, 50);
+  background-color: rgb(61, 59, 59);
   /* background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 14%, rgba(0,212,255,1) 100%); */
 }
@@ -33,6 +34,7 @@ table, th, td {
 }
 th{
   background-color: rgb(55, 205, 55);
+  text-transform: uppercase;
 }
 
 input{

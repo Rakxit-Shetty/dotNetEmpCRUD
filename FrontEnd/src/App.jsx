@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import { Modal } from "react-bootstrap";
 import EditEmp from './components/modals/EditEmp';
 import DelEmp from './components/modals/DelEmp';
 import axios from 'axios';
 // import './App.css'
-
+//SHREYA
 function App() {
 
   const [empDet,setEmpDet]= useState({
@@ -125,7 +123,7 @@ const reqHeader={
           centered
         ><Modal.Header>
         <div className="col-lg-10">
-          <h3 className="modal-title text-center">Del Emp Details</h3>
+          <h3 className="modal-title text-center">Delete Employee Data</h3>
         </div>
         <div className="col-lg-2">
           <button
@@ -144,7 +142,7 @@ const reqHeader={
           </Modal>
           
   
-    <div className="container card border-radius p-4">
+    <div className="container card border-radius p-4 shadow bg-white rounded">
       <form onSubmit={(e)=>{onEmpDetSubmit(e)}} >
       <div className="d-flex justify-content-center align-item-center">
         <div>
@@ -177,7 +175,7 @@ const reqHeader={
           <label>Employee Designation:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
-          <input id="designation" name="designation" className="mx-2" type="text" value={designation} onChange={(e)=>onEmpchange(e)} required/>
+          <input id="designation" name="designation" className="mx-2" type="text" value={designation} onChange={(e)=>onEmpchange(e)} title="Only text is allowed" pattern='^[a-zA-Z@]+$' required/>
         </div>
         </div>
 
@@ -199,7 +197,7 @@ const reqHeader={
         </div>
         </div> 
         </div>
-      <button type="submit" className="btn btn-success float-right my-3">ADD</button>
+      <button type="submit" className="btn btn-success float-right my-3 px-3">ADD EMPLOYEE</button>
       </div>
       </div>
       
@@ -208,7 +206,7 @@ const reqHeader={
       <div>
         <table>
         <tr className="bg-sucess">
-    <th>SL No</th>
+    <th>SL No.</th>
     <th>Name</th>
     <th>Age</th>
     <th>DOB</th>
@@ -228,8 +226,8 @@ const reqHeader={
     <td>{ele.salary}</td>
     <td>{ele.email}</td>
     <td>
-      <button className="btn btn-primary mx-2" onClick={()=>onEditEmp(ele)}>Edit</button>
-      <button className="btn btn-danger mx-2" onClick={()=>onDelEmp(ele)}>Delete</button></td>
+      <button className="btn btn-success mx-2 my-2 px-4" onClick={()=>onEditEmp(ele)}>EDIT</button>
+      <button className="btn btn-danger mx-2 my-2" onClick={()=>onDelEmp(ele)}>DELETE</button></td>
   </tr>
     ))
   }

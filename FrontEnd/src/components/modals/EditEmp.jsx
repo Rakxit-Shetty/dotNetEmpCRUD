@@ -57,7 +57,7 @@ const reqHeader={
         <div>
         <div className="row col-12 m-2">
         <div className="col-6"> 
-           <label>Employee Name</label>
+           <label>Employee Name:<span className="text-danger">*</span></label>
            </div>
            <div className="col-6">
            <input id="name" name="name" className="mx-2" type="text" value={name} onChange={(e)=>onEmpchange(e)} required/>
@@ -67,7 +67,7 @@ const reqHeader={
     
         <div className="row col-12 m-2">
         <div className="col-6">
-          <label>Employee DOB</label>
+          <label>Employee DOB:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
           <input id="dob" name="dob" className="mx-2" type="date" value={dob} onChange={(e)=>onEmpchange(e)} required/>
@@ -75,7 +75,7 @@ const reqHeader={
         </div>
         <div className="row col-12 m-2">
         <div className="col-6">
-          <label>Employee Designation</label>
+          <label>Employee Designation:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
           <input id="designation" name="designation" className="mx-2" type="text" value={designation} onChange={(e)=>onEmpchange(e)} required/>
@@ -83,7 +83,7 @@ const reqHeader={
         </div>
         <div className="row col-12 m-2">
         <div className="col-6">
-          <label>Employee Salalry</label>
+          <label>Employee Salalry:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
           <input id="salary" name="salary" className="mx-2" type="text" value={salary} onChange={(e)=>onEmpchange(e)} required/>
@@ -91,7 +91,7 @@ const reqHeader={
         </div>
         <div className="row col-12 m-2">
         <div className="col-6">
-          <label>Employee Email</label>
+          <label>Employee Email:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
           <input id="email" name="email" className="mx-2" type="text" value={email} onChange={(e)=>onEmpchange(e)} required/>
@@ -100,7 +100,7 @@ const reqHeader={
          
         </div>
         
-      <button type="submit" className="btn btn-success float-right my-3">SAVE</button>
+      <button type="submit" className="btn btn-success float-right my-3">UPDATE</button>
       </div>
       
       </div>

@@ -20,9 +20,9 @@ function DelEmp({delEmpDetModal, setDelEmpModal, getAllemployee}) {
 
   return (
     <div>
-      <h3>Are you sure want to delete this Employee?</h3>
+      <h4>Are you sure want to delete this Employee?</h4>
       <div className="">    
-        <h4>Employee Name: &nbsp; {data?.name}</h4>
+        <h5>Employee Name: &nbsp; {data?.name}</h5>
         </div>
   
       <div className="d-flex justify-content-center m-3">
