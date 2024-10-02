@@ -146,7 +146,7 @@ const reqHeader={
       <form onSubmit={(e)=>{onEmpDetSubmit(e)}} >
       <div className="d-flex justify-content-center align-item-center">
         <div>
-          <h2 className=" ml-4 mb-4 mt-2 text-dark">MY EMPLOYEE DATA STORE</h2>
+          <h2 className=" ml-4 mb-4 mt-2 ">MY EMPLOYEE DATA STORE</h2>
         <div>
 <div className='border p-2'>
 

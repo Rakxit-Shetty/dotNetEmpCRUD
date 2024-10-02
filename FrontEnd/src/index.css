@@ -40,3 +40,7 @@ th{
 input{
   min-width: 100%
 }
+
+h1, h2, h3, h4, h5 {
+color:  rgb(61, 59, 59);
+}
