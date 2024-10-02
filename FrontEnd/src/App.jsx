@@ -16,19 +16,21 @@ function App() {
     dob:"",
     designation:"",
     salary:"",
-   
     email:""
   });
-  const [empList,setEmpList]=useState([]);
 
+  //destructr
+  let{ name, dob, designation, salary, email} =empDet;
+
+  const [empList,setEmpList]=useState([]);
   const [editEmpDetModal,setEditEmpModal]=useState({status:false, data:null});
   const [delEmpDetModal,setDelEmpModal]=useState({status:false, data:null});
 
- let{ name,dob, designation, salary,email} =empDet;
+ 
  
  const getAllemployee=()=>{
   axios.get(import.meta.env.VITE_BACKEND_URL+"api/Employee/GetEmployeeInfo").then((res)=>{
-    setEmpList([...res.data])
+    setEmpList(res.data);
   });
  }
 
@@ -64,9 +66,19 @@ const reqHeader={
 
   console.log(empFinData);
   
-  let res=await axios.post(import.meta.env.VITE_BACKEND_URL+"api/Employee/AddEmployee",
+  await axios.post(import.meta.env.VITE_BACKEND_URL+"api/Employee/AddEmployee",
      empFinData,reqHeader);
+
    getAllemployee()
+   setEmpDet({
+    name:"",
+    age:"",
+    dob:"",
+    designation:"",
+    salary:"",
+    email:""
+  })
+
   }
 
     const onEditEmp=(data)=>{
@@ -213,7 +225,7 @@ const reqHeader={
     <td>{ele.email}</td>
     <td>
       <button className="btn btn-primary mx-2" onClick={()=>onEditEmp(ele)}>Edit</button>
-      <button className="btn btn-danger mx-2" onClick={()=>onDelEmp(ele)}>Del</button></td>
+      <button className="btn btn-danger mx-2" onClick={()=>onDelEmp(ele)}>Delete</button></td>
   </tr>
     ))
   }

@@ -8,8 +8,7 @@ function EditEmp({
   getAllemployee
 }) {
   let {data=null}=editEmpDetModal;
-
-
+ 
     const [empDet,setEmpDet]= useState({
         name:data?.name,
         dob:data?.dob.split("T")[0],

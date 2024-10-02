@@ -21,7 +21,7 @@ function DelEmp({delEmpDetModal, setDelEmpModal, getAllemployee}) {
   return (
     <div>
       <h3>Are you sure Want to Delete this User?</h3>
-      <h4>Employee :{data?.title}</h4>
+      <h4>Employee :{data?.name}</h4>
       <div>
         <button type="button" className="btn btn-danger mx-2" onClick={()=>onClickYES(data?.id)}>
           YES
