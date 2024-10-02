@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
@@ -18,6 +19,10 @@ function App() {
     email:""
   });
   const [empList,setEmpList]=useState([]);
+
+  const [editEmpDetModal,setEditEmpModal]=useState({status:false, data:null});
+  const [delEmpDetModal,setDelEmpModal]=useState({status:false, data:null});
+
  let{ name,age,dob, designation,phone,email} =empDet;
  
  const getAllemployee=()=>{
@@ -53,30 +58,20 @@ function App() {
   // getAllemployee()
   }
 
-    const onEditEmp=()=>{
-      alert("edit");
+    const onEditEmp=(data)=>{
+      setEditEmpModal({status:true, data:data})
+      //alert("edit");
     }
 
-  const onDelEmp=()=>{
-    // console.log("emp del")
-    alert("delete");
+  const onDelEmp=(data)=>{
+    setDelEmpModal({status:true, data:data})
+    // alert("delete");
   };
 
   return (<>
 
   <Modal
-          show={false}
-          backdrop="static"
-          keyboard={false}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <EditEmp/>
-          </Modal>
-
-          <Modal
-          show={false}
+          show={editEmpDetModal.status}
           backdrop="static"
           keyboard={false}
           size="lg"
@@ -84,22 +79,40 @@ function App() {
           centered
         ><Modal.Header>
         <div className="col-lg-10">
-          <h3 className="modal-title text-center">Edit Meeting Details</h3>
+          <h3 className="modal-title text-center">Edit Employee Details</h3>
         </div>
         <div className="col-lg-2">
           <button
-            // onClick={handleMemberMeetingModalCloses}
+            onClick={()=>{setEditEmpModal({status:false, data:null})}}
             className="close"
           >X
-            {/* <img
-              src={require("../../static/images/close.png")}
-              alt="X"
-              style={{ height: "20px", width: "20px" }}
-            /> */}
           </button>
         </div>
       </Modal.Header>
       <Modal.Body><DelEmp/></Modal.Body>
+          </Modal>
+
+{/* DEL EMP */}
+          <Modal
+          show={delEmpDetModal.status}
+          backdrop="static"
+          keyboard={false}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        ><Modal.Header>
+        <div className="col-lg-10">
+          <h3 className="modal-title text-center">Del Emp Details</h3>
+        </div>
+        <div className="col-lg-2">
+          <button
+            onClick={()=>{setDelEmpModal({status:false, data:null})}}
+            className="close"
+          >X
+          </button>
+        </div>
+      </Modal.Header>
+      <Modal.Body> <EditEmp/></Modal.Body>
           
           </Modal>
           
