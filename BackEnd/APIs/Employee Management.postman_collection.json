@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "01fec859-5bf3-4c31-ba27-01099e361033",
+		"name": "Employee Management",
+		"description": "API for managing employee information",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37394023"
+	},
+	"item": [
+		{
+			"name": "Update Employee",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content type of the request body"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": 1, \"name\": \"updatedName\", \"dob\": \"2024-01-01T00:00:00Z\", \"designation\": \"updatedDesignation\", \"email\": \"updated@example.com\", \"salary\": 50000.0}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7145/api/Employee/UpdateEmployee/:id",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7145",
+					"path": [
+						"api",
+						"Employee",
+						"UpdateEmployee",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7145/api/Employee/DeleteEmployee/:id",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7145",
+					"path": [
+						"api",
+						"Employee",
+						"DeleteEmployee",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee Info By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7145/api/Employee/GetEmployeeInfoById/:id",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7145",
+					"path": [
+						"api",
+						"Employee",
+						"GetEmployeeInfoById",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://localhost:7145/api/Employee/GetEmployeeInfo"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content type of the request body"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": 0, \"name\": \"string\", \"dob\": \"2024-01-01T00:00:00Z\", \"designation\": \"string\", \"email\": \"string@example.com\", \"salary\": 0.0}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7145/api/Employee/AddEmployee"
+			},
+			"response": []
+		}
+	]
+}
