@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+import { Modal } from "react-bootstrap";
+import EditEmp from './components/modals/EditEmp';
+import DelEmp from './components/modals/DelEmp';
 import axios from 'axios';
 // import './App.css'
 
@@ -36,11 +39,11 @@ function App() {
 
   const onEmpDetSubmit=async (e)=>{
   e.preventDefault();
-const reqHeader={
-  headers: {
-    'Content-Type': 'application/json'
-  }
-};
+// const reqHeader={
+//   headers: {
+//     'Content-Type': 'application/json'
+//   }
+// };
 
   const empFinData=empDet;
   console.log(empFinData);
@@ -50,17 +53,58 @@ const reqHeader={
   // getAllemployee()
   }
 
-    const onEditEmp=(data)=>{
+    const onEditEmp=()=>{
       alert("edit");
     }
 
-  const onDelEmp=(data)=>{
+  const onDelEmp=()=>{
     // console.log("emp del")
     alert("delete");
   };
 
-  return (
-    <div class="container">
+  return (<>
+
+  <Modal
+          show={false}
+          backdrop="static"
+          keyboard={false}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <EditEmp/>
+          </Modal>
+
+          <Modal
+          show={false}
+          backdrop="static"
+          keyboard={false}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        ><Modal.Header>
+        <div className="col-lg-10">
+          <h3 className="modal-title text-center">Edit Meeting Details</h3>
+        </div>
+        <div className="col-lg-2">
+          <button
+            // onClick={handleMemberMeetingModalCloses}
+            className="close"
+          >X
+            {/* <img
+              src={require("../../static/images/close.png")}
+              alt="X"
+              style={{ height: "20px", width: "20px" }}
+            /> */}
+          </button>
+        </div>
+      </Modal.Header>
+      <Modal.Body><DelEmp/></Modal.Body>
+          
+          </Modal>
+          
+  
+    <div className="container card">
       <form onSubmit={(e)=>{onEmpDetSubmit(e)}}>
       <div className="d-flex justify-content-center align-item-center">
         <div>
@@ -158,6 +202,7 @@ const reqHeader={
         
       </div>
       </div>
+      </>
   )
 }
 
