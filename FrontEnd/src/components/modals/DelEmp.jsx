@@ -21,15 +21,15 @@ function DelEmp({delEmpDetModal, setDelEmpModal, getAllemployee}) {
   return (
     <div>
       <h4>Are you sure want to delete this Employee?</h4>
-      <div className="">    
+      <div className="my-3">    
         <h5>Employee Name: &nbsp; {data?.name}</h5>
         </div>
   
       <div className="d-flex justify-content-center m-3">
-        <button type="button" className="btn btn-danger mx-2" onClick={()=>onClickYES(data?.id)}>
+        <button type="button" className="btn btn-danger mx-3 px-4" onClick={()=>onClickYES(data?.id)}>
           YES
         </button>  
-        <button className="btn btn-success mx-2" onClick={()=>onClickNO()}>
+        <button className="btn btn-success mx-3 px-4" onClick={()=>onClickNO()}>
           NO
           </button>
       </div>
