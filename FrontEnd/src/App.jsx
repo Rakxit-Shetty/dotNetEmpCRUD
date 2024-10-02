@@ -26,7 +26,7 @@ function App() {
  let{ name,age,dob, designation,phone,email} =empDet;
  
  const getAllemployee=()=>{
-  axios.get('https://jsonplaceholder.typicode.com/todos').then((res)=>{
+  axios.get(import.meta.env.VITE_BACKEND_URL).then((res)=>{
     // console.log(res.data)
     setEmpList((e)=>([...e,...res.data]))
   });
@@ -89,7 +89,7 @@ function App() {
           </button>
         </div>
       </Modal.Header>
-      <Modal.Body><DelEmp/></Modal.Body>
+      <Modal.Body><EditEmp setEditEmpModal={setEditEmpModal} editEmpDetModal={editEmpDetModal}/></Modal.Body>
           </Modal>
 
 {/* DEL EMP */}
@@ -112,8 +112,11 @@ function App() {
           </button>
         </div>
       </Modal.Header>
-      <Modal.Body> <EditEmp/></Modal.Body>
-          
+      <Modal.Body>
+        <DelEmp 
+        setDelEmpModal={setDelEmpModal} 
+        delEmpDetModal={delEmpDetModal} /> 
+        </Modal.Body>
           </Modal>
           
   
@@ -126,17 +129,17 @@ function App() {
 
         <div className="row col-12">
         <div className="col-6"> 
-           <label>Employee Name</label>
+           <label>Employee Name:<span className="text-danger">*</span></label>
            </div>
            <div className="col-6">
-           <input id="name" name="name" className="mx-2" type="text" value={name} onChange={(e)=>onEmpchange(e)} required/>
+           <input id="name" name="name" className="mx-2" type="text" value={name} onChange={(e)=>onEmpchange(e)} title='Enter Name' required/>
            </div>
         </div>
 
       
         <div className="row col-12">
         <div className="col-6">
-          <label>Employee Age</label>
+          <label>Employee Age:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
           <input id="age" name="age" className="mx-2" type="text" value={age} onChange={(e)=>onEmpchange(e)} required/>
@@ -144,7 +147,7 @@ function App() {
         </div>
         <div className="row col-12">
         <div className="col-6">
-          <label>Employee DOB</label>
+          <label>Employee DOB:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
           <input id="dob" name="dob" className="mx-2" type="date" value={dob} onChange={(e)=>onEmpchange(e)} required/>
@@ -152,7 +155,7 @@ function App() {
         </div>
         <div className="row col-12">
         <div className="col-6">
-          <label>Employee Designation</label>
+          <label>Employee Designation:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
           <input id="designation" name="designation" className="mx-2" type="text" value={designation} onChange={(e)=>onEmpchange(e)} required/>
@@ -160,7 +163,7 @@ function App() {
         </div>
         <div className="row col-12">
         <div className="col-6">
-          <label>Employee Phone</label>
+          <label>Employee Phone:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
           <input id="phone" name="phone" className="mx-2" type="text" value={phone} onChange={(e)=>onEmpchange(e)} required/>
@@ -168,15 +171,13 @@ function App() {
         </div>
         <div className="row col-12">
         <div className="col-6">
-          <label>Employee Email</label>
+          <label>Employee Email:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
-          <input id="email" name="email" className="mx-2" type="text" value={email} onChange={(e)=>onEmpchange(e)} required/>
+          <input id="email" name="email" className="mx-2" type="email" value={email} onChange={(e)=>onEmpchange(e)} required/>
         </div>
+        </div> 
         </div>
-         
-        </div>
-        
       <button type="submit" className="btn btn-success float-right my-3">ADD</button>
       </div>
       
