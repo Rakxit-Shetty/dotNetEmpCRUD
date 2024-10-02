@@ -92,7 +92,7 @@ const reqHeader={
   console.log("emp",empList);
   
   return (<>
-  
+  {/* EDIT EMP */}
   <Modal
           show={editEmpDetModal.status}
           backdrop="static"
@@ -144,14 +144,16 @@ const reqHeader={
           </Modal>
           
   
-    <div className="container card p-4">
-      <form onSubmit={(e)=>{onEmpDetSubmit(e)}}>
+    <div className="container card border-radius p-4">
+      <form onSubmit={(e)=>{onEmpDetSubmit(e)}} >
       <div className="d-flex justify-content-center align-item-center">
         <div>
-          <h2 className="mb-4">Employee DataStore</h2>
+          <h2 className=" ml-4 mb-4 mt-2 text-dark">MY EMPLOYEE DATA STORE</h2>
         <div>
+<div className='border p-2'>
 
-        <div className="row col-12">
+
+        <div className="row col-12 m-2">
         <div className="col-6"> 
            <label>Employee Name:<span className="text-danger">*</span></label>
            </div>
@@ -162,15 +164,15 @@ const reqHeader={
 
       
         
-        <div className="row col-12">
+        <div className="row col-12 m-2">
         <div className="col-6">
           <label>Employee DOB:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
-          <input id="dob" name="dob" className="mx-2" type="date" value={dob} onChange={(e)=>onEmpchange(e)} required/>
+          <input id="dob"  name="dob" className="mx-2" type="date" value={dob} onChange={(e)=>onEmpchange(e)} required/>
         </div>
         </div>
-        <div className="row col-12">
+        <div className="row col-12 m-2">
         <div className="col-6">
           <label>Employee Designation:<span className="text-danger">*</span></label>
         </div>
@@ -178,7 +180,8 @@ const reqHeader={
           <input id="designation" name="designation" className="mx-2" type="text" value={designation} onChange={(e)=>onEmpchange(e)} required/>
         </div>
         </div>
-        <div className="row col-12">
+
+        <div className="row col-12 m-2">
         <div className="col-6">
           <label>Employee Salary:<span className="text-danger">*</span></label>
         </div>
@@ -187,7 +190,7 @@ const reqHeader={
         </div>
         </div>
         
-        <div className="row col-12">
+        <div className="row col-12 m-2">
         <div className="col-6">
           <label>Employee Email:<span className="text-danger">*</span></label>
         </div>
@@ -198,25 +201,26 @@ const reqHeader={
         </div>
       <button type="submit" className="btn btn-success float-right my-3">ADD</button>
       </div>
+      </div>
       
       </div>
       </form>
       <div>
         <table>
         <tr className="bg-sucess">
-    <th>ID</th>
+    <th>SL No</th>
     <th>Name</th>
     <th>Age</th>
     <th>DOB</th>
-    <th>Desination</th>
+    <th>Designation</th>
     <th>Salary</th>
     <th>Email</th>
     <th>Action</th>
   </tr>
   {
     empList.map((ele,idx)=>(
-  <tr key={idx}>
-    <td>{ele.id}</td>
+  <tr key={ele.id}>
+    <td>{idx+1}</td>
     <td>{ele.name}</td>
     <td>{getAge(ele.dob.split("T")[0])}</td>
     <td>{ele.dob.split("T")[0].split("-").reverse().join("-")}</td>

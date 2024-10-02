@@ -55,7 +55,7 @@ const reqHeader={
       <div className="d-flex justify-content-center align-item-center">
         <div>
         <div>
-        <div className="row col-12">
+        <div className="row col-12 m-2">
         <div className="col-6"> 
            <label>Employee Name</label>
            </div>
@@ -65,7 +65,7 @@ const reqHeader={
         </div>
 
     
-        <div className="row col-12">
+        <div className="row col-12 m-2">
         <div className="col-6">
           <label>Employee DOB</label>
         </div>
@@ -73,7 +73,7 @@ const reqHeader={
           <input id="dob" name="dob" className="mx-2" type="date" value={dob} onChange={(e)=>onEmpchange(e)} required/>
         </div>
         </div>
-        <div className="row col-12">
+        <div className="row col-12 m-2">
         <div className="col-6">
           <label>Employee Designation</label>
         </div>
@@ -81,7 +81,7 @@ const reqHeader={
           <input id="designation" name="designation" className="mx-2" type="text" value={designation} onChange={(e)=>onEmpchange(e)} required/>
         </div>
         </div>
-        <div className="row col-12">
+        <div className="row col-12 m-2">
         <div className="col-6">
           <label>Employee Salalry</label>
         </div>
@@ -89,7 +89,7 @@ const reqHeader={
           <input id="salary" name="salary" className="mx-2" type="text" value={salary} onChange={(e)=>onEmpchange(e)} required/>
         </div>
         </div>
-        <div className="row col-12">
+        <div className="row col-12 m-2">
         <div className="col-6">
           <label>Employee Email</label>
         </div>

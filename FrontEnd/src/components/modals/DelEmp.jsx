@@ -20,9 +20,12 @@ function DelEmp({delEmpDetModal, setDelEmpModal, getAllemployee}) {
 
   return (
     <div>
-      <h3>Are you sure Want to Delete this User?</h3>
-      <h4>Employee :{data?.name}</h4>
-      <div>
+      <h3>Are you sure want to delete this Employee?</h3>
+      <div className="">    
+        <h4>Employee Name: &nbsp; {data?.name}</h4>
+        </div>
+  
+      <div className="d-flex justify-content-center m-3">
         <button type="button" className="btn btn-danger mx-2" onClick={()=>onClickYES(data?.id)}>
           YES
         </button>  
