@@ -15,7 +15,8 @@ function App() {
     age:"",
     dob:"",
     designation:"",
-    phone:"",
+    salary:"",
+   
     email:""
   });
   const [empList,setEmpList]=useState([]);
@@ -23,19 +24,21 @@ function App() {
   const [editEmpDetModal,setEditEmpModal]=useState({status:false, data:null});
   const [delEmpDetModal,setDelEmpModal]=useState({status:false, data:null});
 
- let{ name,age,dob, designation,phone,email} =empDet;
+ let{ name,dob, designation, salary,email} =empDet;
  
  const getAllemployee=()=>{
-  axios.get(import.meta.env.VITE_BACKEND_URL).then((res)=>{
-    // console.log(res.data)
-    setEmpList((e)=>([...e,...res.data]))
+  axios.get(import.meta.env.VITE_BACKEND_URL+"api/Employee/GetEmployeeInfo").then((res)=>{
+    setEmpList([...res.data])
   });
  }
 
   useEffect(()=>{
-    getAllemployee()
+    getAllemployee();
   },[])
   
+  const getAge=(DOBdata)=>{
+    return Number(new Date().getFullYear()) - Number(DOBdata.split("-")[0]) 
+  }
 
   const onEmpchange=((e)=>{
     let {name, value}=e.target;
@@ -44,32 +47,40 @@ function App() {
 
   const onEmpDetSubmit=async (e)=>{
   e.preventDefault();
-// const reqHeader={
-//   headers: {
-//     'Content-Type': 'application/json'
-//   }
-// };
 
-  const empFinData=empDet;
+const reqHeader={
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
+
+  const empFinData={
+    designation:empDet.designation,
+    dob:empDet.dob,
+    email:empDet.email,
+    name:empDet.name,
+    salary:empDet.salary
+  };
+
   console.log(empFinData);
   
-  // let res=await axios.post('https://localhost:5001/addEmp', empFinData,reqHeader);
-  alert("data sent");
-  // getAllemployee()
+  let res=await axios.post(import.meta.env.VITE_BACKEND_URL+"api/Employee/AddEmployee",
+     empFinData,reqHeader);
+   getAllemployee()
   }
 
     const onEditEmp=(data)=>{
       setEditEmpModal({status:true, data:data})
-      //alert("edit");
     }
 
   const onDelEmp=(data)=>{
     setDelEmpModal({status:true, data:data})
-    // alert("delete");
   };
 
+  console.log("emp",empList);
+  
   return (<>
-
+  
   <Modal
           show={editEmpDetModal.status}
           backdrop="static"
@@ -89,7 +100,7 @@ function App() {
           </button>
         </div>
       </Modal.Header>
-      <Modal.Body><EditEmp setEditEmpModal={setEditEmpModal} editEmpDetModal={editEmpDetModal}/></Modal.Body>
+      <Modal.Body><EditEmp setEditEmpModal={setEditEmpModal} editEmpDetModal={editEmpDetModal} getAllemployee={getAllemployee}/></Modal.Body>
           </Modal>
 
 {/* DEL EMP */}
@@ -115,12 +126,13 @@ function App() {
       <Modal.Body>
         <DelEmp 
         setDelEmpModal={setDelEmpModal} 
-        delEmpDetModal={delEmpDetModal} /> 
+        delEmpDetModal={delEmpDetModal} 
+        getAllemployee={getAllemployee}/> 
         </Modal.Body>
           </Modal>
           
   
-    <div className="container card">
+    <div className="container card p-4">
       <form onSubmit={(e)=>{onEmpDetSubmit(e)}}>
       <div className="d-flex justify-content-center align-item-center">
         <div>
@@ -137,14 +149,7 @@ function App() {
         </div>
 
       
-        <div className="row col-12">
-        <div className="col-6">
-          <label>Employee Age:<span className="text-danger">*</span></label>
-        </div>
-        <div className="col-6">        
-          <input id="age" name="age" className="mx-2" type="text" value={age} onChange={(e)=>onEmpchange(e)} required/>
-        </div>
-        </div>
+        
         <div className="row col-12">
         <div className="col-6">
           <label>Employee DOB:<span className="text-danger">*</span></label>
@@ -163,12 +168,13 @@ function App() {
         </div>
         <div className="row col-12">
         <div className="col-6">
-          <label>Employee Phone:<span className="text-danger">*</span></label>
+          <label>Employee Salary:<span className="text-danger">*</span></label>
         </div>
         <div className="col-6">        
-          <input id="phone" name="phone" className="mx-2" type="text" value={phone} onChange={(e)=>onEmpchange(e)} required/>
+          <input id="salary" name="salary" className="mx-2" type="number" value={salary} onChange={(e)=>onEmpchange(e)} required/>
         </div>
         </div>
+        
         <div className="row col-12">
         <div className="col-6">
           <label>Employee Email:<span className="text-danger">*</span></label>
@@ -191,21 +197,20 @@ function App() {
     <th>Age</th>
     <th>DOB</th>
     <th>Desination</th>
-    <th>Phone</th>
+    <th>Salary</th>
     <th>Email</th>
     <th>Action</th>
   </tr>
   {
     empList.map((ele,idx)=>(
   <tr key={idx}>
-    <td>{ele.userId}</td>
-    <td>{ele.title}</td>
-    <td>{ele.userId}</td>
-   
-    <td>{}</td>
-    <td>{}</td>
-    <td>{}</td>
-    <td>{}</td>
+    <td>{ele.id}</td>
+    <td>{ele.name}</td>
+    <td>{getAge(ele.dob.split("T")[0])}</td>
+    <td>{ele.dob.split("T")[0].split("-").reverse().join("-")}</td>
+    <td>{ele.designation}</td>
+    <td>{ele.salary}</td>
+    <td>{ele.email}</td>
     <td>
       <button className="btn btn-primary mx-2" onClick={()=>onEditEmp(ele)}>Edit</button>
       <button className="btn btn-danger mx-2" onClick={()=>onDelEmp(ele)}>Del</button></td>

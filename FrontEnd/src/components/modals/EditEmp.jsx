@@ -1,23 +1,55 @@
+/* eslint-disable react/prop-types */
 import {useState} from 'react'
+import axios from "axios";
 
-function EditEmp() {
+function EditEmp({
+  setEditEmpModal, 
+  editEmpDetModal, 
+  getAllemployee
+}) {
+  let {data=null}=editEmpDetModal;
+
+
     const [empDet,setEmpDet]= useState({
-        name:"",
-        age:"",
-        dob:"",
-        designation:"",
-        phone:"",
-        email:""
+        name:data?.name,
+        dob:data?.dob.split("T")[0],
+        designation:data?.designation,
+        salary:data?.salary,
+        email:data?.email
       });
-      let{ name,age,dob, designation,phone,email} =empDet;
+
+      let{ name,dob, designation,salary,email} =empDet;
+      
       const onEmpchange=((e)=>{
         let {name, value}=e.target;
         setEmpDet((el)=>({...el,[name]:value}));
-      })
-    const onEmpDetEditSubmit=()=>{
-        alert("");
+      });
 
-    }
+    const onEmpDetEditSubmit=async (e)=>{
+      e.preventDefault();
+     
+const reqHeader={
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
+
+  const empUpdatedData={
+    designation:empDet.designation,
+    dob:empDet.dob,
+    email:empDet.email,
+    name:empDet.name,
+    salary:empDet.salary
+  };
+
+  await axios.put(`${import.meta.env.VITE_BACKEND_URL}api/Employee/UpdateEmployee/${data?.id}`,
+    empUpdatedData,reqHeader);
+    
+  getAllemployee();
+  setEditEmpModal({status:false, data:null})
+   }
+
+
   return (
     <form onSubmit={(e)=>{onEmpDetEditSubmit(e)}}>
       <div className="d-flex justify-content-center align-item-center">
@@ -32,15 +64,7 @@ function EditEmp() {
            </div>
         </div>
 
-      
-        <div className="row col-12">
-        <div className="col-6">
-          <label>Employee Age</label>
-        </div>
-        <div className="col-6">        
-          <input id="age" name="age" className="mx-2" type="text" value={age} onChange={(e)=>onEmpchange(e)} required/>
-        </div>
-        </div>
+    
         <div className="row col-12">
         <div className="col-6">
           <label>Employee DOB</label>
@@ -59,10 +83,10 @@ function EditEmp() {
         </div>
         <div className="row col-12">
         <div className="col-6">
-          <label>Employee Phone</label>
+          <label>Employee Salalry</label>
         </div>
         <div className="col-6">        
-          <input id="phone" name="phone" className="mx-2" type="text" value={phone} onChange={(e)=>onEmpchange(e)} required/>
+          <input id="salary" name="salary" className="mx-2" type="text" value={salary} onChange={(e)=>onEmpchange(e)} required/>
         </div>
         </div>
         <div className="row col-12">
