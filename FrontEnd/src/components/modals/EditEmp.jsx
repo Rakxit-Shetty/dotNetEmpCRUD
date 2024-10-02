@@ -34,6 +34,7 @@ const reqHeader={
 };
 
   const empUpdatedData={
+    id:data?.id,
     designation:empDet.designation,
     dob:empDet.dob,
     email:empDet.email,
